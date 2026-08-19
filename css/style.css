@@ -1,0 +1,1227 @@
+/* Juliann's Space — homepage
+   Built from Figma: portfolio (node 4:40) */
+
+:root {
+  --color-bg: #ffffff;
+  --color-text: #000000;
+  --font-body: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Young Serif', Georgia, 'Times New Roman', serif;
+
+  --header-height: 92px;
+  --nav-width: 303px;
+  --nav-gap: 24px;
+
+  --size-title: clamp(1.75rem, 1.1rem + 2.6vw, 2.5rem);     /* ~28px -> 40px */
+  --size-subtitle: clamp(1.25rem, 0.85rem + 1.8vw, 2rem);   /* ~20px -> 32px */
+  --size-nav-link: clamp(1.125rem, 0.9rem + 0.8vw, 2rem);   /* ~18px -> 32px */
+  --size-body: clamp(1rem, 0.9rem + 0.4vw, 1.25rem);        /* ~16px -> 20px */
+
+  --placeholder-bg: #9e9e9e;
+
+  /* Content-width ceilings. These are max-widths on auto-width blocks, so on
+     narrower viewports they never force overflow — they only cap how wide
+     things are allowed to grow once there's room to spare. */
+  --reading-max: 643px;     /* text-only sections (comfortable line length) */
+  --content-max: 929px;     /* grids / images / tables / mixed layouts */
+  --projects-grid-max: 736px;
+  --carousel-max: 1234px;
+  --staggered-max: 1120px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: normal;
+}
+
+h1 {
+  font-family: var(--font-heading);
+}
+
+a {
+  color: inherit;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Header / logo */
+
+.site-header {
+  display: flex;
+  align-items: flex-start;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--color-bg);
+}
+
+.logo-link {
+  display: inline-flex;
+  padding: 10px 10px 10px 80px;
+  line-height: 0;
+}
+
+.logo-icon {
+  display: block;
+  width: 72px;
+  height: 72px;
+  max-width: 100%;
+}
+
+/* Layout: sticky sidebar nav + content column, tops aligned */
+
+.page-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--nav-gap);
+}
+
+.side-nav {
+  flex: 0 0 var(--nav-width);
+  width: var(--nav-width);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: var(--header-height);
+  height: calc(100vh - var(--header-height));
+  align-self: flex-start;
+  padding: 40px 0 40px 80px;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+/* Footer content, pinned to the bottom of the sticky nav */
+
+.nav-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.nav-footer a {
+  font-size: var(--size-body);
+  text-decoration: none;
+}
+
+.nav-footer a:hover,
+.nav-footer a:focus-visible {
+  text-decoration: underline;
+}
+
+.nav-footer-copy {
+  margin: 0;
+  font-size: var(--size-body);
+  opacity: 0.6;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+  font-size: var(--size-nav-link);
+  line-height: 1;
+  text-decoration: none;
+  z-index: 1;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  text-decoration: underline;
+}
+
+/* Current-page pill: an absolutely-positioned backdrop so the pill can be
+   wider/taller than the text without the text itself ever moving. */
+
+.nav-link.is-current {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-link.is-current::before {
+  content: "";
+  position: absolute;
+  inset: -6px -16px;
+  z-index: -1;
+  background: #000;
+  border: 1px solid #000;
+  border-radius: 999px;
+}
+
+.nav-link.is-current:hover,
+.nav-link.is-current:focus-visible {
+  text-decoration: none;
+}
+
+.content-column {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  min-height: 100vh;
+  padding: 40px 40px 0 0;
+  max-width: var(--reading-max);
+}
+
+.hero-title,
+.hero-subtitle {
+  margin: 0;
+  font-weight: 400;
+}
+
+.hero-title {
+  font-size: 56px;
+  white-space: nowrap;
+  width: max-content;
+}
+
+.hero-subtitle {
+  font-size: var(--size-subtitle);
+}
+
+/* Projects section — target for the "projects" nav link */
+
+.projects-section {
+  padding: 0 40px 96px 0;
+  max-width: var(--content-max);
+  scroll-margin-top: var(--header-height);
+}
+
+.projects-heading {
+  margin: 0 0 64px;
+  font-size: var(--size-title);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px 24px;
+  width: 100%;
+  max-width: var(--projects-grid-max);
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-card .placeholder-img {
+  width: 400px;
+  height: 400px;
+  max-width: none;
+  background: none;
+  object-fit: contain;
+}
+
+.project-card:hover .placeholder-img,
+.project-card:focus-visible .placeholder-img {
+  opacity: 0.85;
+}
+
+.project-card-title {
+  margin: 0;
+  font-size: var(--size-subtitle);
+  font-weight: 700;
+}
+
+.project-card:hover .project-card-title,
+.project-card:focus-visible .project-card-title {
+  text-decoration: underline;
+}
+
+.project-card-desc {
+  margin: 0;
+  font-size: var(--size-body);
+}
+
+/* Tablet: narrower sidebar, tighter spacing */
+
+@media (max-width: 1024px) {
+  .side-nav {
+    --nav-width: 256px;
+    padding-top: 32px;
+  }
+
+  .hero,
+  .projects-section {
+    padding-left: 0;
+    padding-right: 32px;
+  }
+}
+
+/* Wide desktop: laptop viewports keep the widths above as-is; past this
+   point there's enough spare room that content can grow past those caps
+   instead of leaving a dead gap on the right. */
+
+@media (min-width: 1600px) {
+  :root {
+    --reading-max: 760px;
+    --content-max: 1280px;
+    --projects-grid-max: 1000px;
+    --carousel-max: 1500px;
+    --staggered-max: 1400px;
+  }
+}
+
+/* Mobile gate: below tablet width, the real page is hidden and replaced
+   with a message asking people to switch to a larger screen. */
+
+.mobile-gate {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  body > *:not(.mobile-gate) {
+    display: none !important;
+  }
+
+  .mobile-gate {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 32px;
+    background: #161616;
+    color: #ffffff;
+    z-index: 9999;
+  }
+
+  .mobile-gate p {
+    max-width: 320px;
+    margin: 0;
+    font-size: var(--size-subtitle);
+  }
+}
+
+/* =========================================================
+   Project / work page components
+   Built from Figma: portfolio (node 19:201)
+   ========================================================= */
+
+.project-main {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 96px;
+}
+
+/* Vertical rhythm: a new h2 marks a new section (40px above it);
+   everything else within a section sits 20px below what precedes it. */
+
+.project-main > * {
+  margin-top: 20px;
+}
+
+.project-main > *:first-child {
+  margin-top: 0;
+}
+
+/* :not(:first-child) also guarantees this beats the :first-child rule
+   above on specificity, regardless of source order — otherwise any first
+   child that happens to contain an h2 (e.g. a topper with an embedded
+   "Product Overview" heading) would incorrectly get pushed down 40px. */
+.project-main > *:not(:first-child):has(h2.section-heading) {
+  margin-top: 40px;
+}
+
+/* Topper: title/meta row + placeholder image + table-of-contents */
+
+.project-topper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: var(--content-max);
+  padding: 40px 40px 0 0;
+}
+
+/* Grid (not flex) so the meta column lines up exactly with the accordion
+   column below it — both rows use the same column split, weighted toward
+   the image/title side. */
+
+.project-header-row {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  align-items: flex-start;
+  gap: 16px 24px;
+}
+
+.project-title {
+  margin: 0;
+  font-weight: 700;
+  font-size: 56px;
+}
+
+.project-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.project-meta p {
+  margin: 0;
+  font-size: var(--size-body);
+}
+
+.project-meta-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project-topper-body {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  align-items: flex-start;
+  gap: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-text);
+}
+
+/* Global Conflict Tracker merges Product Overview into project-header-row
+   itself (no separate project-topper-body) — :has() picks that case out
+   so the line still lands after Product Overview, full width, without
+   also drawing one under the plain title+meta row on the other pages. */
+.project-header-row:has(h2.section-heading) {
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-text);
+}
+
+/* Let the topper media fill its full column width instead of stopping at
+   the 452px cap that applies everywhere else these placeholder/image
+   modifiers are used (e.g. small thumbnails elsewhere on the site). Its
+   aspect-ratio modifier class still controls the shape, so it just grows
+   larger rather than distorting. */
+.project-topper-body .project-cover-img,
+.project-topper-body .placeholder-img {
+  max-width: none;
+}
+
+/* Accordion (topper table of contents) */
+
+.accordion {
+  flex: 1 1 260px;
+  min-width: 0;
+}
+
+.accordion-item {
+  border-bottom: 1px solid var(--color-text);
+}
+
+/* The topper's project-summary accordion shouldn't double up with the
+   line already under Product Overview, so its last item goes borderless.
+   Scoped to the topper only — other accordions (e.g. Key Findings) keep
+   the border on their last item. */
+.project-header-row .accordion-item:last-child {
+  border-bottom: none;
+}
+
+.accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 24px 0;
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.accordion-item:first-child .accordion-trigger {
+  padding-top: 0;
+}
+
+.accordion-label {
+  font-size: var(--size-subtitle);
+  font-weight: 400;
+}
+
+.accordion-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.accordion-icon::before,
+.accordion-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: currentColor;
+  transition: transform 0.3s ease;
+}
+
+.accordion-icon::before {
+  width: 20px;
+  height: 2px;
+  transform: translate(-50%, -50%);
+}
+
+.accordion-icon::after {
+  width: 2px;
+  height: 20px;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.accordion-trigger[aria-expanded="true"] .accordion-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.accordion-panel-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.accordion-item.is-open .accordion-panel-wrap {
+  grid-template-rows: 1fr;
+}
+
+.accordion-panel {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.accordion-panel p,
+.accordion-panel ul {
+  margin: 0 0 16px;
+  font-size: var(--size-body);
+}
+
+.accordion-panel p:last-child,
+.accordion-panel ul:last-child {
+  margin-bottom: 24px;
+}
+
+.accordion-panel img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 0 16px;
+}
+
+.accordion-panel img:last-child {
+  margin-bottom: 24px;
+}
+
+.accordion-panel ul {
+  list-style: none;
+  padding: 0;
+}
+
+.accordion-panel li {
+  padding-left: 26px;
+  position: relative;
+}
+
+.accordion-panel li::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  background: var(--color-text);
+  border-radius: 50%;
+}
+
+.accordion-panel li + li {
+  margin-top: 8px;
+}
+
+/* Shared section text styles */
+
+.section-heading {
+  margin: 0;
+  font-size: var(--size-subtitle);
+  font-weight: 700;
+}
+
+.dive-deeper-heading {
+  margin: 0;
+  margin-top: 80px;
+  font-family: var(--font-heading);
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.section-body {
+  margin: 0;
+  font-size: var(--size-body);
+}
+
+.section-body.is-placeholder {
+  opacity: 0.55;
+}
+
+.section-list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.section-list li {
+  font-size: var(--size-body);
+  padding-left: 26px;
+  position: relative;
+}
+
+.section-list li::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  background: var(--color-text);
+  border-radius: 50%;
+}
+
+.subsection-heading {
+  margin: 0;
+  font-size: var(--size-body);
+  font-weight: 700;
+}
+
+/* Component: content group (heading + stacked accordion, reading width) */
+
+.content-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: var(--reading-max);
+  padding: 0 40px 0 0;
+}
+
+.content-group .accordion {
+  flex: none;
+  width: 100%;
+}
+
+.content-group .accordion-label {
+  font-size: 24px;
+}
+
+.content-group .accordion-trigger {
+  padding-bottom: 16px;
+}
+
+.finding-block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Modifier: tighter 16px stacking (e.g. title directly above its meta). */
+.finding-block--tight {
+  gap: 16px;
+}
+
+/* Component: process steps (horizontal phase list) */
+
+.process-steps {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: var(--content-max);
+  padding: 0 40px 0 0;
+}
+
+.process-step {
+  font-size: var(--size-body);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.process-arrow {
+  font-size: var(--size-body);
+  opacity: 0.45;
+}
+
+/* Component: method grid (research method cards) */
+
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  max-width: var(--content-max);
+  padding: 0 40px 0 0;
+}
+
+.method-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px;
+  border: 1px solid var(--color-text);
+}
+
+.method-card .subsection-heading {
+  font-size: var(--size-subtitle);
+}
+
+.method-question {
+  margin: 0;
+  font-size: var(--size-body);
+  font-style: italic;
+}
+
+.method-body {
+  margin: 0;
+  font-size: var(--size-body);
+}
+
+.method-stat {
+  margin: 8px 0 0;
+  font-size: var(--size-subtitle);
+  font-weight: 700;
+}
+
+/* Component: insight table (finding -> design response) */
+
+.insight-table-wrap {
+  max-width: var(--content-max);
+  padding: 0 40px 0 0;
+  overflow-x: auto;
+}
+
+.insight-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: var(--size-body);
+}
+
+.insight-table th,
+.insight-table td {
+  width: 50%;
+  text-align: left;
+  vertical-align: top;
+  padding: 16px;
+  border: 1px solid var(--color-text);
+}
+
+.insight-table th {
+  font-weight: 700;
+}
+
+/* Component: stat grid (before/after metrics) */
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: var(--content-max);
+  padding: 0 40px 0 0;
+}
+
+/* Modifier: single stacked column instead of the auto-fit row (e.g. when
+   nested inside a narrower text column beside an image). */
+.stat-grid--stacked {
+  grid-template-columns: 1fr;
+  max-width: none;
+  padding: 0;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid var(--color-text);
+}
+
+.stat-value {
+  margin: 0;
+  font-size: var(--size-subtitle);
+  font-weight: 700;
+}
+
+.stat-label {
+  margin: 0;
+  font-size: var(--size-body);
+}
+
+/* Component: tag list (e.g. stakeholder / department chips) */
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: var(--content-max);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border: 1px solid var(--color-text);
+  border-radius: 999px;
+  font-size: var(--size-body);
+}
+
+/* Component: media + text ("left image, right text") */
+
+.component-media-text {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  max-width: var(--content-max);
+  padding: 0 40px 0 0;
+  flex-wrap: wrap;
+}
+
+/* Modifier: same 3:2 column split as .project-header-row (title | accordion),
+   text on the left, media on the right, instead of a fixed media width. */
+.component-media-text--split {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+}
+
+.component-media-text--split .media-frame {
+  max-width: none;
+}
+
+.component-text {
+  flex: 1 1 320px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.media-frame {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 452px;
+  flex-shrink: 0;
+}
+
+/* Newsletter Overhaul's merged Process/Component System section stacks
+   two images in its media-frame — 40px between them instead of the
+   default 8px caption gap. Harmless on other pages' #process, which only
+   ever has a single image in that slot. */
+#process .media-frame {
+  gap: 40px;
+}
+
+.media-frame--wide {
+  max-width: 700px;
+}
+
+.media-caption {
+  margin: 0;
+  font-size: var(--size-body);
+  opacity: 0.65;
+}
+
+.inline-link {
+  text-decoration: underline;
+}
+
+/* Component: basic text (no image) */
+
+.component-basic-text {
+  max-width: var(--reading-max);
+  padding: 0 40px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Component: carousel (horizontally scrollable) */
+
+.component-carousel {
+  display: flex;
+  gap: 20px;
+  max-width: var(--carousel-max);
+  padding: 0 40px 0 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.component-carousel-block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.carousel-wrap {
+  position: relative;
+}
+
+.carousel-img {
+  display: block;
+  flex-shrink: 0;
+  object-fit: cover;
+  object-position: top;
+  background: var(--placeholder-bg);
+}
+
+.lightbox-trigger {
+  cursor: pointer;
+}
+
+.lightbox-trigger:hover {
+  opacity: 0.9;
+}
+
+/* Lightbox */
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  padding: 64px;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 1000;
+}
+
+.lightbox.is-open {
+  display: flex;
+}
+
+.lightbox-img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  cursor: zoom-in;
+  touch-action: none;
+  transform-origin: center center;
+  transition: transform 0.2s ease;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.lightbox-img.is-zoomed {
+  cursor: grab;
+}
+
+.lightbox-img.is-panning {
+  cursor: grabbing;
+  transition: none;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+
+.lightbox-close:hover {
+  background: #222;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  border: 2px solid #fff;
+  cursor: pointer;
+  z-index: 2;
+  padding: 0;
+}
+
+.carousel-arrow:hover {
+  background: #222;
+}
+
+.carousel-arrow.is-hidden {
+  display: none;
+}
+
+.carousel-prev {
+  left: 16px;
+}
+
+.carousel-next {
+  right: 56px;
+}
+
+/* Placeholder images — grey boxes standing in for future artwork */
+
+.placeholder-img {
+  background: var(--placeholder-bg);
+  display: block;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.placeholder-img--square {
+  max-width: 452px;
+  aspect-ratio: 1 / 1;
+}
+
+.placeholder-img--3-2 {
+  max-width: 452px;
+  aspect-ratio: 3 / 2;
+}
+
+.project-cover-img {
+  display: block;
+  width: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+  object-position: center;
+}
+
+.placeholder-img--landscape {
+  max-width: 452px;
+  aspect-ratio: 452 / 302;
+}
+
+.placeholder-img--carousel {
+  width: 607px;
+  max-width: 80vw;
+  aspect-ratio: 607 / 405;
+  scroll-snap-align: start;
+}
+
+/* Component: landscape grid (2x2) */
+
+.grid-landscape {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  width: 100%;
+  max-width: var(--content-max);
+  padding: 0 40px 0 0;
+}
+
+.grid-landscape .placeholder-img {
+  max-width: none;
+  aspect-ratio: 700 / 467;
+}
+
+/* Component: portrait grid (2x2, centered) */
+
+.grid-portrait {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  width: 100%;
+  max-width: 644px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.grid-portrait .placeholder-img {
+  max-width: none;
+  aspect-ratio: 310 / 459;
+}
+
+.grid-img {
+  object-fit: contain;
+}
+
+/* Component: staggered portrait grid (4 columns, cascading offset) */
+
+.grid-staggered {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: start;
+  gap: 24px;
+  width: 100%;
+  max-width: var(--staggered-max);
+  padding: 0 40px 0 0;
+}
+
+/* Override the default 20px rhythm gap for this specific pairing. */
+.component-carousel-block + .grid-staggered {
+  margin-top: 40px;
+}
+
+.grid-staggered .placeholder-img,
+.grid-staggered .grid-img {
+  /* No forced aspect-ratio/background — each photo spans the full column
+     width at its own natural aspect ratio, so nothing gets cropped or
+     letterboxed against the placeholder grey. */
+  max-width: none;
+  height: auto;
+}
+
+.grid-staggered .placeholder-img {
+  background: none;
+}
+
+.grid-staggered > *:nth-child(4n+2) {
+  margin-top: 48px;
+}
+
+.grid-staggered > *:nth-child(4n+3) {
+  margin-top: 96px;
+}
+
+.grid-staggered > *:nth-child(4n+4) {
+  margin-top: 144px;
+}
+
+/* Component: device showcase (flat 4-column grid, grouped by device,
+   no stagger — each device group gets its own heading, with a wider gap
+   between groups than between images within a group). */
+
+.device-showcase {
+  display: grid;
+  /* Mobile column narrower than tablet's. */
+  grid-template-columns: 2fr 3fr;
+  align-items: start;
+  gap: 64px;
+  width: 100%;
+  max-width: var(--staggered-max);
+  padding: 0 40px 0 0;
+}
+
+.device-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+/* Modifier: stack the groups as full-width rows instead of side-by-side
+   columns (e.g. a desktop row, then a mobile row underneath it). */
+.device-showcase--stacked {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: var(--content-max);
+}
+
+/* Both the desktop and mobile rows share the same fixed preview height,
+   with a border around each cropped (top-anchored) screenshot. Each row
+   also gets its own fixed preview width (desktop wider than mobile) so
+   the crop matches each format's real proportions instead of an even
+   flex share. */
+.device-showcase--stacked .device-group-grid img {
+  height: 600px;
+  object-fit: cover;
+  object-position: top;
+  border: 1px solid var(--color-text);
+}
+
+.device-group--mobile .device-group-grid img {
+  flex: 0 0 320px;
+  width: 320px;
+}
+
+.device-group--desktop .device-group-grid img {
+  flex: 0 0 400px;
+  width: 400px;
+}
+
+/* Fixed-width images (above) won't shrink to fit narrower viewports —
+   let the row scroll horizontally instead of overflowing the page. */
+.device-showcase--stacked .device-group-grid {
+  overflow-x: auto;
+}
+
+/* Flex (not grid) so the images are guaranteed to sit in a single row,
+   sharing the width evenly, rather than risk wrapping into a column. */
+.device-group-grid {
+  display: flex;
+  gap: 24px;
+}
+
+/* A shared fixed height is what makes the mobile and tablet rows end at
+   the same height despite their different column widths — each image
+   crops (vertically, via object-position: top) to fill it. */
+.device-group-grid img {
+  display: block;
+  flex: 1 1 0;
+  min-width: 0;
+  width: 100%;
+  height: 640px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.component-carousel-block + .device-showcase {
+  margin-top: 40px;
+}
+
+@media (max-width: 1024px) {
+  .project-topper,
+  .component-media-text,
+  .component-basic-text,
+  .component-carousel,
+  .grid-landscape {
+    padding-right: 32px;
+  }
+
+  .project-header-row,
+  .project-topper-body,
+  .component-media-text--split {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-portrait {
+    padding: 0 32px;
+  }
+}

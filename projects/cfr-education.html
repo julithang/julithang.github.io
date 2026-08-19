@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CFR Education</title>
+  <meta name="description" content="Redesigning CFR Education's lesson plan and simulation pages as it joined the CFR design system." />
+  <meta property="og:title" content="CFR Education" />
+  <meta property="og:description" content="Redesigning CFR Education's lesson plan and simulation pages as it joined the CFR design system." />
+  <meta property="og:type" content="website" />
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Young+Serif&display=swap" rel="stylesheet" />
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <header class="site-header">
+    <a href="../index.html" class="logo-link" aria-label="Juliann's Space — home">
+      <img src="../images/logo.png" alt="" class="logo-icon" width="72" height="72" />
+    </a>
+  </header>
+
+  <div class="page-layout">
+    <nav class="side-nav" aria-label="Primary">
+      <ul class="nav-list">
+        <li><a href="../about.html" class="nav-link">about</a></li>
+        <li><a href="../index.html#projects" class="nav-link is-current" aria-current="page">projects</a></li>
+        <li><a href="../files/ThangJuliann_DesignResume.pdf" target="_blank" rel="noopener" class="nav-link">resume</a></li>
+      </ul>
+
+      <div class="nav-footer">
+        <a href="https://www.linkedin.com/in/julithang/" target="_blank" rel="noopener">linkedin</a>
+        <a href="mailto:juliannthang@gmail.com?subject=Hi%20there!">email</a>
+        <p class="nav-footer-copy">&copy; 2026 Juliann Thang</p>
+      </div>
+    </nav>
+
+    <main class="content-column">
+      <div class="project-main">
+        <!-- Topper: title/meta + placeholder image + table of contents -->
+        <section class="project-topper">
+          <div class="project-header-row">
+            <div class="finding-block">
+              <h1 class="project-title">CFR Education</h1>
+              <div class="project-meta">
+                <p><b>Role:</b> Designer</p>
+                <p><b>Team:</b> 2 Designers, Product Manager, Dev</p>
+              </div>
+
+              <h2 class="section-heading">Project Overview</h2>
+              <p class="section-body">CFR Education students understand and engage with major world issues, offering over 800 free, nonpartisan lesson plans, simulations, and other classroom resources, along with training and support for the teachers that use them.
+              It moved onto WordPress and formally joined the CFR suite. CFR.org's design resources, including me, the PM for education and a developer tackled aligning this product with the rest of CFR. 
+            <br><br>
+              <a href="https://education.cfr.org/"><b>View the live site here!</b></a></p>
+            </div>
+
+            <div class="accordion" aria-label="Project summary">
+              <div class="accordion-item">
+                <button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="accordion-panel-overview" id="accordion-trigger-overview">
+                  <span class="accordion-label">Overview</span>
+                  <span class="accordion-icon" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-panel-wrap" id="accordion-panel-overview" role="region" aria-labelledby="accordion-trigger-overview">
+                  <div class="accordion-panel">
+                    <p>As CFR's Education site migrated from from Drupal to WordPress and formally joined the CFR suite, I brought it in line with the rest of CFR&rsquo;s design system while ensuring the site still met the needs of educators.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="accordion-panel-challenges" id="accordion-trigger-challenges">
+                  <span class="accordion-label">Key Challenges</span>
+                  <span class="accordion-icon" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-panel-wrap" id="accordion-panel-challenges" role="region" aria-labelledby="accordion-trigger-challenges">
+                  <div class="accordion-panel">
+                    <ul>
+                      <li>CFR Education ran on a different platform, with no consistent visual system and no in-house designers</li>
+                      <li>Lesson plans and simulations weren&rsquo;t designed around how educators actually navigate and use them in class</li>
+                      <li>CFR.org&rsquo;s existing components didn&rsquo;t account for education-specific needs like grade level, time estimates, or printable PDFs</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="accordion-panel-solutions" id="accordion-trigger-solutions">
+                  <span class="accordion-label">Solutions</span>
+                  <span class="accordion-icon" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-panel-wrap" id="accordion-panel-solutions" role="region" aria-labelledby="accordion-trigger-solutions">
+                  <div class="accordion-panel">
+                    <ul>
+                      <li>Exposed the full table of contents by default instead of collapsing it into a dropdown</li>
+                      <li>Centered the content column instead of right-aligning it, resolving dead space</li>
+                      <li>Extended CFR.org&rsquo;s topper component to surface grade level, time estimate, and a downloadable PDF</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+  <!-- Final Designs -->
+        <div class="component-carousel-block" id="final-designs">
+          <h2 class="section-heading">Desktop Designs</h2>
+          <div class="carousel-wrap">
+            <div class="component-carousel" aria-label="Project image carousel">
+              <img class="carousel-img placeholder-img--carousel lightbox-trigger" src="../images/education/Learning Journey/OG/Learning Journey.png" alt="Learning journey page">
+              <img class="carousel-img placeholder-img--carousel lightbox-trigger" src="../images/education/Learning Journey sub-page/OG/Learning Journey sub-page.png"alt="Learning Journey sub pager">
+              <img class="carousel-img placeholder-img--carousel lightbox-trigger" src="../images/education/Simulation subpage/Simulation.png" alt="Simulation page, alternate view">
+            </div>
+            <button type="button" class="carousel-arrow carousel-prev is-hidden" aria-label="Previous image">
+              <svg width="20" height="16" viewBox="0 0 20 16" fill="none" aria-hidden="true">
+                <path d="M19 8H1M1 8L8 1M1 8L8 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <button type="button" class="carousel-arrow carousel-next" aria-label="Next image">
+              <svg width="20" height="16" viewBox="0 0 20 16" fill="none" aria-hidden="true">
+                <path d="M1 8H19M19 8L12 1M19 8L12 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Device showcase: mobile designs and tablet designs, grouped -->
+        <div class="device-showcase">
+          <div class="device-group">
+            <h3 class="subsection-heading">Mobile Designs</h3>
+            <div class="device-group-grid">
+              <img class="placeholder-img lightbox-trigger" src="../images/education/Learning Journey/SM.png" alt="Learning Journey page, mobile view">
+              <img class="placeholder-img lightbox-trigger" src="../images/education/Learning Journey sub-page/SM.png" alt="Learning Journey sub-page, mobile view">
+            </div>
+          </div>
+          <div class="device-group">
+            <h3 class="subsection-heading">Tablet Designs</h3>
+            <div class="device-group-grid">
+              <img class="placeholder-img lightbox-trigger" src="../images/education/Simulation subpage/OG/MD.png" alt="Simulation sub-page, tablet view">
+              <img class="placeholder-img lightbox-trigger" src="../images/education/Simulation/MD.png" alt="Simulation page, tablet view">
+            </div>
+          </div>
+        </div>
+
+        <h2 class="dive-deeper-heading">Dive Deeper</h2>
+
+        <!-- The Challenge: basic text -->
+        <section class="component-basic-text" id="challenge">
+          <h2 class="section-heading">The Challenge</h2>
+        </section>
+
+        <!-- Three challenges -->
+        <div class="method-grid" id="challenge-breakdown">
+          <div class="method-card">
+            <h3 class="subsection-heading">Navigating long, structured content</h3>
+            <p class="method-body">Lesson plans and simulations have multiple sections an educator needs to move between quickly. The central question was how to handle the table of contents, should it collapse into a dropdown to save space, or stay fully visible so nothing is hidden?</p>
+          </div>
+          <div class="method-card">
+            <h3 class="subsection-heading">Layout alignment vs. legibility</h3>
+            <p class="method-body">Earlier designs right-aligned the content body to match CFR.org's convention. On CFR Education pages, that left the entire left side of the layout empty with dead space.</p>
+          </div>
+          <div class="method-card">
+            <h3 class="subsection-heading">Building new components</h3>
+            <p class="method-body">Lesson plans and simulations needed to surface information not found on main CFR, such as grade level,time estimate for the lesson, and a downloadable PDF, which is essentially essentially a view of the full page so instructors can print it and use it in class without a screen. None of this existed in the CFR.org "topper" component.</p>
+          </div>
+        </div>
+
+        <!-- Process & Design Work: basic text -->
+        <section class="component-media-text component-media-text--split" id="process">
+          <div class="component-text">
+            <h2 class="section-heading">Process &amp; Design Work</h2>
+            <ul class="section-list">
+              <li><strong>Table of contents:</strong> I contemplated between a collapsible dropdown and a fully exposed TOC on mobile. Since lesson plans and simulation pages tend to be short, the team agreed a dropdown added an extra step without saving meaningful space. I exposed the full TOC by default, keeping every section visible and one tap away.</li>
+              <li><strong>Content alignment:</strong> Moved away from CFR.org's right-aligned layout and centered it instead. On Education pages, it made the pages a bit jarring and empty. Centering fixed the dead space and made it easier to read.</li>
+              <li><strong>Extending the topper component.</strong> Pulled from CFR.org's existing design system components as a starting point, then built new, education-specific variants when needed. The page topper needed to surface grade level, a time estimate (e.g., "one 45-minute period"), and a downloadable, print-ready PDF version of the page for instructors.</li>
+              <li><strong>Platform migration.</strong> This redesign coincided with CFR Education's move from Drupal to WordPress, aligning it with the platform CFR.org had already migrated to. UX and dev worked were now aligned across both platforms.</li>
+              <li><strong>Visual language unified with the Council:</strong> Typography, color, and iconography were brought in line with the main CFR.org style which replaced Education's previous disconnected look with the same design language as the rest of the site.</li>
+            </ul>
+
+            <h2 class="section-heading">Outcome &amp; What&rsquo;s Next</h2>
+            <ul class="section-list">
+              <li><strong>CFR Education joined the CFR family, visually and structurally.</strong> The redesign gave CFR Education a visual identity consistent with CFR.org for the first time, and moved it onto the same platform (WordPress) as the rest of CFR's products — reflecting its new status as part of the CFR suite rather than a separate entity with its own systems.</li>
+              <li>This was the first project to extend the design system to a new, distinct audience. I balanced reusing existing components and then adapting them specifically for Education’s needs. This also served as an early test of how flexible and scalable the system could be beyond CFR.org.</li>
+              <li><strong>Centered layout adopted org-wide.</strong> The centered body alignment that solved the blank page space problem on CFR Education was strong enough that it's now the default alignment for CFR.org overall.</li>
+            </ul>
+          </div>
+          <div class="media-frame">
+            <img class="placeholder-img lightbox-trigger" src="../images/education/Simulation subpage/OG/Simulation.png" alt="Simulation page">
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <div class="mobile-gate">
+    <p>to have the best experience with my portfolio, please view on desktop or tablet :)</p>
+  </div>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button type="button" class="lightbox-close" aria-label="Close larger image view">&times;</button>
+    <img class="lightbox-img" src="" alt="" />
+  </div>
+
+  <script src="../js/accordion.js"></script>
+  <script src="../js/carousel.js"></script>
+  <script src="../js/lightbox.js"></script>
+</body>
+</html>
