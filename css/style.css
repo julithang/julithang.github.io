@@ -45,6 +45,7 @@ body {
 }
 
 body {
+  overflow-x: hidden;
   background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
@@ -191,7 +192,6 @@ ul {
   gap: 22px;
   min-height: 100vh;
   padding: 40px 40px 0 0;
-  max-width: var(--reading-max);
 }
 
 .hero-title,
@@ -201,12 +201,13 @@ ul {
 }
 
 .hero-title {
+  align-self: flex-start;
   font-size: 56px;
-  white-space: nowrap;
-  width: max-content;
+  line-height: 1;
 }
 
 .hero-subtitle {
+  max-width: var(--reading-max);
   font-size: var(--size-subtitle);
 }
 
@@ -226,7 +227,7 @@ ul {
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 48px 24px;
+  gap: 48px 60px;
   width: 100%;
   max-width: var(--projects-grid-max);
 }
@@ -240,6 +241,7 @@ ul {
 }
 
 .project-card .placeholder-img {
+  align-self: center;
   width: 400px;
   height: 400px;
   max-width: none;
@@ -280,6 +282,14 @@ ul {
   .projects-section {
     padding-left: 0;
     padding-right: 32px;
+  }
+
+  .hero {
+    padding-top: 32px;
+  }
+
+  .hero-title {
+    font-size: clamp(28px, 6vw, 48px);
   }
 }
 
