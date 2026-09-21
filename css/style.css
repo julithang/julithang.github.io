@@ -23,7 +23,7 @@
      things are allowed to grow once there's room to spare. */
   --reading-max: 643px;     /* text-only sections (comfortable line length) */
   --content-max: 929px;     /* grids / images / tables / mixed layouts */
-  --projects-grid-max: 736px;
+  --projects-grid-max: 600px;
   --carousel-max: 1234px;
   --staggered-max: 1120px;
 }
@@ -190,7 +190,6 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 22px;
-  min-height: 100vh;
   padding: 40px 40px 0 0;
 }
 
@@ -220,14 +219,14 @@ ul {
 }
 
 .projects-heading {
-  margin: 0 0 64px;
+  margin: 0 0 20px;
   font-size: var(--size-title);
 }
 
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 48px 60px;
+  gap: 16px 60px;
   width: 100%;
   max-width: var(--projects-grid-max);
 }
@@ -242,8 +241,8 @@ ul {
 
 .project-card .placeholder-img {
   align-self: center;
-  width: 400px;
-  height: 400px;
+  width: clamp(72px, 14vh, 140px);
+  height: clamp(72px, 14vh, 140px);
   max-width: none;
   background: none;
   object-fit: contain;
@@ -256,7 +255,7 @@ ul {
 
 .project-card-title {
   margin: 0;
-  font-size: var(--size-subtitle);
+  font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.375rem);
   font-weight: 700;
 }
 
@@ -267,6 +266,10 @@ ul {
 
 .project-card-desc {
   margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   font-size: var(--size-body);
 }
 
@@ -301,7 +304,7 @@ ul {
   :root {
     --reading-max: 760px;
     --content-max: 1280px;
-    --projects-grid-max: 1000px;
+    --projects-grid-max: 800px;
     --carousel-max: 1500px;
     --staggered-max: 1400px;
   }
